@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body btn-danger text-white">
+            <h3 class="card-title">Tienda virtual</h3>
+          
+            <p class="card-text">
+                Añada productos al carrito.
+            </p>
+        </div>
+    </div>
+    <div class="row content">
+       
+                <div class="col-sm-4 inputs">
+                    <div class="card">
+                        <div class="card-body btn-danger">
+                            <h5 class="card-title">Agregar/Modificar producto</h5>
+                    <form class="form-control" [formGroup]="formularioContacto" (ngSubmit)="enviar()">
+                        <div class="input-group mb-3">
+                            <p>
+                                Código:<input class="form-control" type="text" formControlName="codigo" placeholder="Ingrese código para modificar" required>
+                            </p>
+                        </div>
+                        <div class="input-group mb-3">
+                            <p>
+                                Nombre:<input class="form-control" type="text" formControlName="nombre" required>
+                            </p>
+                        </div>
+                        <div class="input-group mb-3">
+                            <p>
+                                Precio:<input class="form-control" type="number" formControlName="precio" required>
+                            </p>
+                        </div>
+                        <div class="input-group mb-3">
+                            <p>
+                                Cantidad:<input class="form-control" type="number" formControlName="cantidad" required>
+                            </p>
+                        </div>
+                        <div class="input-group mb-3">
+                            <p>
+                                Descrpción:<input class="form-control" type="text" formControlName="descripcion" required>
+                            </p>
+                        </div>
+                        <div>
+                            <button class="btn btn-success" type="submit">Enviar</button>
+                            <button class="btn btn-warning" type="reset">Limpiar</button>
+                            <button class="btn btn-info" type="button" (click)="modificar()">Modificar</button>
+                        </div>
+                    </form>
+                </div>
+        
+            </div>
+        </div>
+   
+        <div class="col-sm-8 tables">
+            <div class="card">
+                <div class="card-header bg-primary text-white"> Listado de Productos</div>
+                <div class="card-body">
+                    <div class="container">
+                        <table class="table table-responsive table-dark table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Codigo</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Precio</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Descrpción</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                                <tr *ngFor="let product of products" class="table-light">
+                                    <td>{{ product.codigo }}</td>
+                                    <td>{{ product.nombre }}</td>
+                                    <td>{{ product.precio }}</td>
+                                    <td>{{ product.cantidad }}</td>
+                                    <td>{{ product.descripcion }}</td>
+                                    <td>
+                                        <button class="btn btn-danger" (click)="eliminar(product.codigo)">Eliminar</button>
+                                     
+            
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+          
+        </div>
+        <div class="card-footer bg-primary text-white" > Total de la compra con IVA: {{total  | number: '.1-2'}}</div>
+    </div>
+</div>
+    </div>
+</div>
